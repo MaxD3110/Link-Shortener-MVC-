@@ -8,7 +8,7 @@ namespace LinkShortener.Data
         public DbSet<LinkModel> Links { get; set; }
         public MariaDbContext(DbContextOptions options) : base(options) 
         {
-            Database.EnsureCreated();
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
