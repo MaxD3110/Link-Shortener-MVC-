@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LinkShortener.Models.Domain.LinkModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="panel-transp between">
+    <div class="main-caption">
+        <h1> Basic <b>URL Shortener</b> </h1>
+    </div>
+    <div class="main-button">
+        <a class="btn btn-primary btn-main" asp-controller="Home" asp-action="Shorten">Shorten my URL!</a>
+    </div>
+</div>
+
+<div class="panel panel-bright">
+    <div class="panel-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.RawUrl)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.ShortUrl)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Date)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Viewed)</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var link in Model)
+                {
+                    <tr>
+                        <td><a class="table-link" target="_blank" href="@link.RawUrl">@link.RawUrl</a></td>
+                        <td><a class="table-link" target="_blank" href="@link.ShortUrl">@link.ShortUrl</a></td>
+                        <td>@link.Date</td>
+                        <td>@link.Viewed</td>
+                        <td><a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@link.Id">Edit</a></td>
+                        <td>
+                            <form method="post" asp-action="Delete" asp-route-id="@link.Id">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

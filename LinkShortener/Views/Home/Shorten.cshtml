@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Create Page";
+}
+
+<div class="panel panel-bright">
+    <div class="panel-top">
+        <h1>Shorten link</h1>
+    </div>
+    <form method="post" action="Shorten">
+        <div class="panel-content">
+            <div class="form-segment">
+                <label class="form-label">Paste a link</label>
+                <input type="text" class="form-control" name="link" placeholder="Here goes the link!">
+            </div>
+        </div>
+        <div class="panel-bottom">
+            <div>
+                <button class="btn btn-dark" type="submit" value="Submit">Shorten</button>
+                <a class="btn btn-outline-dark" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+

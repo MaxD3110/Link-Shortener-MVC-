@@ -1,0 +1,39 @@
+﻿@model LinkShortener.Models.Domain.LinkModel
+
+@{
+    ViewData["Title"] = "Edit Page";
+}
+
+<div class="panel panel-bright">
+    <div class="panel-top">
+        <h1>Edit panel</h1>
+    </div>
+    <form method="post">
+        <div class="panel-content">
+            <input asp-for="Id" type="text" class="hidden" name="id" readonly>
+            <div class="form-segment">
+                <label class="form-label">Current shortened URL</label>
+                <input asp-for="ShortUrl" type="text" class="form-control" readonly disabled>
+            </div>
+            <div class="form-segment">
+                <button class="btn btn-dark" asp-action="Regenerate" type="submit">Regenerate</button>
+                <label class="form-label">- Click to regenerate short URL</label>
+            </div>
+            <div class="form-segment">
+                <label class="form-label">Edit full URL</label>
+                <input asp-for="RawUrl" type="text" class="form-control" name="link">
+            </div>
+        </div>
+        <div class="panel-bottom">
+            <div>
+                <button class="btn btn-dark" type="submit" asp-action="Edit" value="Submit">Save</button>
+                <a class="btn btn-outline-dark" asp-action="Index">Cancel</a>
+            </div>
+            <div>
+                <button class="btn btn-danger" asp-action="Delete" type="submit">Delete</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
