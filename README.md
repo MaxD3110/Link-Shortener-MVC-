@@ -24,7 +24,7 @@ ________________________________________________________________________________
 
 # Скрины
 
-![image](https://github.com/MaxD3110/Link-Shortener-MVC-/assets/80919963/77da7da7-5cb1-41d5-9316-aa4b816cc55f)
+![image](https://github.com/MaxD3110/Link-Shortener-MVC-/assets/80919963/7c4141af-daff-46e8-b095-1ec73f808702)
 
 
 ![image](https://github.com/MaxD3110/Link-Shortener-MVC-/assets/80919963/c4fc96ae-3e0a-401e-b2be-71f7c13e40ef)
