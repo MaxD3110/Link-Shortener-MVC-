@@ -18,14 +18,14 @@ namespace LinkShortener.Controllers
             TempData["alertMessage"] = null;
             var data = await _linkService.GetAllAsync();
 
+            //In case of this aplication, host value can vary from time to time
             foreach (var el in data)
-            {
                 el.ShortUrl = Request.Scheme + "://" + Request.Host.Value + "/" + el.ShortUrl;
-            }
 
             return View(data);
         }
 
+        //Get: Home/Shorten
         public IActionResult Shorten()
         {
             return View();
@@ -59,7 +59,7 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var success =  await _linkService.DeleteAsync(id);
+            var success = await _linkService.DeleteAsync(id);
 
             if (success < 1) return View("Error");
 
@@ -76,6 +76,7 @@ namespace LinkShortener.Controllers
             return RedirectToAction("Index");
         }
 
+        //Get: Home/Edit/{id}
         public async Task<IActionResult> Edit(int id)
         {
             var data = await _linkService.GetByIdAsync(id);
@@ -94,7 +95,7 @@ namespace LinkShortener.Controllers
             if (!_linkService.ValidateUrl(link))
             {
                 TempData["alertMessage"] = "Invalid link!";
-                return View();
+                return await Edit(id);
             } 
 
             var result = await _linkService.UpdateAsync(link, id);
