@@ -8,7 +8,14 @@ namespace LinkShortener.Data
         public DbSet<LinkModel> Links { get; set; }
         public MariaDbContext(DbContextOptions options) : base(options) 
         {
-            Database.Migrate(); 
+            try { Database.Migrate(); }
+            catch (Exception ex) 
+            {
+                throw new Exception("Attention!!! Check Database connection string (appsettings.json) for UserID/Password/Host validity! \n" +
+                    "This program requires MariaDB v10.3.39 to be installed on the machine to make a connection! \n" +
+                    "Original exception message: " + ex.Message); 
+            }
+             
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
