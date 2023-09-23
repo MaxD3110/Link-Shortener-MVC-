@@ -62,7 +62,7 @@ namespace LinkShortener.Service
             return result;
         }
 
-        //Get RawUrl by given ShortUrl
+        //Get RawUrl by entries ShortUrl
         public async Task<LinkModel?> GetByTokenAsync(string token)
         {
             var result = await _ctx.Links.FirstOrDefaultAsync(el => el.ShortUrl == token);
@@ -141,7 +141,7 @@ namespace LinkShortener.Service
             return link;
         }
 
-        //Generating unique token from given elements
+        //Generate unique token
         public string Shorten()
         {
             const string Literals = "02356789BbCcDdEeFfGgHhJjKkLlMmNnOoPpQqRrSsTtVvWwXxYyZz"; //Elements for randomization

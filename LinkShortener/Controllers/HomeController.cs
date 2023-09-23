@@ -18,7 +18,7 @@ namespace LinkShortener.Controllers
             TempData["alertMessage"] = null;
             var data = await _linkService.GetAllAsync();
 
-            //In case of this aplication, host value can vary from time to time
+            //In case of this aplication, given host and port can vary from time to time
             foreach (var el in data)
                 el.ShortUrl = Request.Scheme + "://" + Request.Host.Value + "/" + el.ShortUrl;
 
@@ -44,7 +44,7 @@ namespace LinkShortener.Controllers
 
             if (isExist != null)
             {
-                TempData["alertMessage"] = $"Shortened URL with path {link} already exist!";
+                TempData["alertMessage"] = $"Shortened URL with path {link} already exists!";
                 return View();
             }
 
